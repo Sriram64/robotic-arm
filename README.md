@@ -1,2 +1,2 @@
-# A Roboti-Arm built using an Arduino
+# A Robotic-Arm built using an Arduino
 

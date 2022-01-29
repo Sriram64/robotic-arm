@@ -20,28 +20,43 @@ void setup() {
   eSer.attach(10);
   cSer.attach(11);
 
-  bSer.write(pos); sSer.write(pos); eSer.write(0); cSer.write(0);
+  bSer.write(pos); 
+  delay(5);
+  sSer.write(pos); 
+  delay(5);
+  eSer.write(0); 
+  delay(5);
+  cSer.write(0);
   
 }
 
 void loop() {
 
-  int temp = analogRead(bPot);
+  int btemp = analogRead(bPot);
+  int stemp = analogRead(sPot);
+  int etemp = analogRead(ePot);
+  int ctemp = analogRead(cPot);
 
-  bVal = map(temp, 0, 1023, 0, 180);
+  bVal = val(btemp);
   bSer.write(bVal);
-  delay(3);
+  delay(1);
 
-  sVal = map(temp, 0, 1023, 0, 180);
+  sVal = val(stemp);
   sSer.write(sVal);
+  delay(1);
+
+  eVal = val(etemp);
+  eSer.write(eVal);
+  delay(1);
+
+  cVal = val(ctemp);
+  cSer.write(eVal);
   delay(3);
 
-  eVal = map(temp, 0, 1023, 0, 180);
-  eSer.write(eVal);
-  delay(3);
-    
-  eVal = map(temp, 0, 1023, 0, 180);
-  eSer.write(eVal);
-  delay(3);
+}
 
+int val(int temp){
+  int avgVal = avgVal * 0.95 + temp * 0.5;
+  int mVal = map(avgVal, 0, 1023, 0, 180);
+  return mVal;
 }

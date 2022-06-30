@@ -7,8 +7,5 @@ def write(x):
     time.sleep(0.05)
     return
 
-#while True:
-    #num = input("Enter the angle: ")
 
-    #val = write(num)
     

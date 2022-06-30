@@ -18,7 +18,7 @@ void loop() {
 
       Serial.print(x);
       
-      for (int i=0; i<=x; i+=3){
+      for (int i=0; i<=x; i+=2){
           s1.write(i);
           delay(5);
         }
